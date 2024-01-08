@@ -8,15 +8,13 @@ router.get('/', function(req, res, next) {
 
 router.get('/:id', (req, res, next) => {
   console.log(req.params.id)
-  if (req.params.id === '0') next('route')
+  if (req.params.id === '0') res.render('user', { title: "Failed", name: req.params.id })
 
-  else next()
-}, (req, res, next) => {
-  res.render('user_id', { id: req.params.id});
+  else res.render('user_id', { id: req.params.id});
 });
 
-router.get('/:id', function(req, res, next) {
-  res.render('user', { title: "Failed", name: req.params.id })
-});
+// router.get('/:id', function(req, res, next) {
+//   res.render('user', { title: "Failed", name: req.params.id })
+// });
 
 module.exports = router;
